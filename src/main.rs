@@ -8,19 +8,52 @@ use lecture_list::Lecture;
 fn app() -> Html {
     let lectures = vec![
         Lecture{
+            id: 0,
+            topic: "Formula Sheet Ideas".to_string(),
+            notes: "
+                - P=IV, V=IR, all cap and ind equations \n
+                - R and L add for series, C add for parallel \n
+                -rc natural eqs
+                -rc step eqs
+                -general formula
+                -rl nat and step
+                -diode snubber how to
+                ".to_string()
+        },
+        Lecture{
             id: 1, 
-            topic: "Review of Circuit Elements".to_string(),
-            notes: "Some words...".to_string(),
+            topic: "Circuit Basics".to_string(),
+            notes: String::from("Resistor: dissipates power, convert electrical E -> heat E, no memory
+                Inductor: stores E in B field, short term current source, steady-state: short circuit
+                Capppacitor: stores E in E field, short term voltage source, steady-sate: open circuit")
         },
         Lecture{
             id: 2,
-            topic: "Some stuff".to_string(),
-            notes: "more words...".to_string()
+            topic: "RC Natural Response".to_string(),
+            notes: "
+                Natural response: the response of a system to its internal E with no input \n
+                Step response: response of a sys due to a sudden applied constant input \n
+                Transient response: the response of a sys to a change from steady-state conditions \n
+                RC Natural response: \n
+                    vc(t) = Vo * e^(-t/RC) \n
+                    ic(t) = Io * e^(-t/RC)
+            ".to_string()
         },
         Lecture{
             id: 3,
-            topic: "Some stuff".to_string(),
-            notes: "more words...".to_string()
+            topic: "RC Step Response".to_string(),
+            notes: "vc(t) =  V(1-e^(-t/RC)), ic(t) = (V/R)*e^(-t/RC)".to_string()
+        },
+        Lecture{
+            id: 4,
+            topic: "RL Natural + Step Response".to_string(),
+            notes: "Natural: i(t) = (I0)*e^(-tR/L), 
+                    Step: v(t) =  Ve^(-tR/L), i(t) = (V/R) * (1 - e^(-tR/L))".to_string()
+        },
+        Lecture{
+            id: 5,
+            topic: "Switching".to_string(),
+            notes: "Diode Snubbers to protect your switch, also using multiple eqs with diff start values and time constant for diff stages of a circuit".to_string()
         }
     ];
 
@@ -48,7 +81,6 @@ fn app() -> Html {
                 <LectureList lectures={lectures} on_click={on_lecture_select.clone()} />
                 {for details}
             </div>
-            
         </>
     }
 }
