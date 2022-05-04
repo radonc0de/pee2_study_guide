@@ -1,0 +1,3 @@
+Couldn't resist trying out [Yew](https://yew.rs/) but also needed to study for finals so I decided to kill two birds with one stone...
+
+This is a study guide for my Principles of Electrical Engineering 2 course at Rutgers written as a Yew Rust webapp that compiles down to [WASM](https://webassembly.org/).
