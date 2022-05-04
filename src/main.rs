@@ -12,12 +12,17 @@ fn app() -> Html {
             topic: "Formula Sheet Ideas".to_string(),
             notes: "
                 - P=IV, V=IR, all cap and ind equations \n
+                - impedence and impedence rules
                 - R and L add for series, C add for parallel \n
                 -rc natural eqs
                 -rc step eqs
                 -general formula
                 -rl nat and step
                 -diode snubber how to
+                -op amp eqs
+                -series/parallel RLC nat & step resp and 3 sol types
+                -common laplace transforms
+                -circuit elements in s domain
                 ".to_string()
         },
         Lecture{
@@ -25,7 +30,7 @@ fn app() -> Html {
             topic: "Circuit Basics".to_string(),
             notes: String::from("Resistor: dissipates power, convert electrical E -> heat E, no memory
                 Inductor: stores E in B field, short term current source, steady-state: short circuit
-                Capppacitor: stores E in E field, short term voltage source, steady-sate: open circuit")
+                Capacitor: stores E in E field, short term voltage source, steady-sate: open circuit")
         },
         Lecture{
             id: 2,
@@ -54,6 +59,36 @@ fn app() -> Html {
             id: 5,
             topic: "Switching".to_string(),
             notes: "Diode Snubbers to protect your switch, also using multiple eqs with diff start values and time constant for diff stages of a circuit".to_string()
+        },
+        Lecture{
+            id: 7, 
+            topic: "Intro to Op Amps".to_string(),
+            notes: "
+            Inverting: Vo/Vi = -R2/R1
+            R's btwn 1k ohm to 470k ohm, supply 5-18v,
+            when z2 is a capacitor, forms op-amp integrator,
+            ".to_string()
+        },
+        Lecture{
+            id: 8,
+            topic: "RLC Series and Parallel Natural Response".to_string(),
+            notes: "equation with 3 possibilities, first appearance of neper frequency and resonant freq".to_string()
+        },
+        Lecture{
+            id: 9,
+            topic: "RLC Series and Parallel Step Response".to_string(),
+            notes: "3 possibilities + also transient analysis".to_string()
+        },
+        Lecture{
+            id: 11,
+            topic: "Step and Delta Function".to_string(),
+            notes: "k=1 unit step k*u(t), delay of a: k*u(t-a), pulse from t=[a,b]: u(t-a)-u(t-b), 
+                    delta func: 0 everywhere except t=0, here it is infinity, area = 1".to_string()
+        },
+        Lecture{
+            id: 12,
+            topic: "Laplace Transforms and the S-domain".to_string(),
+            notes: "".to_string()
         }
     ];
 
@@ -65,10 +100,6 @@ fn app() -> Html {
             selected_lecture.set(Some(lecture))
         })
     };
-
-    let details = selected_lecture.as_ref().map(|lecture| html! {
-        <LectureDetails lecture={lecture.clone()} />
-    });
 
     let details = selected_lecture.as_ref().map(|lecture| html! {
         <LectureDetails lecture={lecture.clone()} />
